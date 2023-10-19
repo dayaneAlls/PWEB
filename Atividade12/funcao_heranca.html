@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Criando funcão tipo conta utilizando herança e mostrar os dados da conta</title>
+</head>
+<body>
+    <script>
+        // Criando funcão tipo conta utilizando herança e mostrar os dados da conta    
+        function Conta() {
+            var nomeCorrentista;
+            var banco;
+            var numeroConta;
+            var saldo;
+
+            this.setNomeCorrentista = function (value) {
+                this.nomeCorrentista = value;
+            }
+            this.getNomeCorrentista = function () {
+                return this.nomeCorrentista;
+            }
+            this.setBanco = function (value) {
+                this.banco = value;
+            }
+            this.getBanco = function () {
+                return this.banco;
+            }
+            this.setNumeroConta = function (value) {
+                this.numeroConta = value;
+            }
+            this.getNumeroConta = function () {
+                return this.numeroConta;
+            }
+            this.setSaldo = function (value) {
+                this.saldo = value;
+            }
+            this.getSaldo = function () {
+                return this.saldo;
+            }
+        }
+
+        function Corrente() {
+            var saldoEspecial;
+
+            this.setSaldoEspecial = function (value) {
+                this.saldoEspecial = value;
+            }
+            this.getSaldoEspecial = function () {
+                return this.saldoEspecial;
+            }
+        }
+
+        function Poupanca() {
+            var juros;
+            var dataVencimento;
+
+            this.setJuros = function (value) {
+                this.juros = value;
+            }
+            this.getJuros = function () {
+                return this.juros;
+            }
+            this.setDataVencimento = function (value) {
+                this.dataVencimento = value;
+            }
+            this.getDataVenciemento = function () {
+                return this.dataVencimento;
+            }
+        }
+
+        Corrente.prototype = new Conta();
+        Poupanca.prototype = new Conta();
+
+        contaCorrente = new Corrente();
+        contaPoupanca = new Poupanca();
+
+        contaCorrente.setNomeCorrentista("Dayane Alves");
+        contaCorrente.setBanco("Itaú");
+        contaCorrente.setNumeroConta("1234");
+        contaCorrente.setSaldo("2.000");
+        contaCorrente.setSaldoEspecial("1.000");
+
+        contaPoupanca.setNomeCorrentista("Dayane Alves");
+        contaPoupanca.setBanco("Itaú");
+        contaPoupanca.setNumeroConta("1234");
+        contaPoupanca.setSaldo("10.000");
+        contaPoupanca.setJuros("1%");
+        contaPoupanca.setDataVencimento("05/25");
+        
+        alert("Conta Corrente: " + "\nNome Correntista=" + contaCorrente.getNomeCorrentista() 
+            + "\nBanco: " + contaCorrente.getBanco()
+            + "\nNumero da Conta: " + contaCorrente.getNumeroConta()
+            + "\nSaldo: " + contaCorrente.getSaldo()
+            + "\nSaldo Especial: " + contaCorrente.getSaldoEspecial()
+            + "\n\nConta Poupança: " + "\nNome Correntista=" + contaPoupanca.getNomeCorrentista() 
+            + "\nBanco: " + contaPoupanca.getBanco()
+            + "\nNumero da Conta: " + contaPoupanca.getNumeroConta()
+            + "\nSaldo: " + contaPoupanca.getSaldo()
+            + "\nSaldo Juros: " + contaPoupanca.getJuros()
+            + "\nData Vencimento: " + contaPoupanca.getDataVenciemento()
+        );   
+
+    </script>
+</body>
+</html>
