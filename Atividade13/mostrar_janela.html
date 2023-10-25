@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Criando uma página para mostrar eventos do mouse</title>
+</head>
+
+<body>
+    <div style="margin: 0 auto;">
+        <h1 id="texto">Janela Aberta</h1>
+        <img src="janela-fechada.jpg" id="janela" style="width: 400px; height: 400px;" onmouseover="abrir()"
+            onmouseout="fechar()" onclick="quebrar()">
+    </div>
+
+</body>
+<script>
+    var jan = document.getElementById("janela");
+    var texto = document.getElementById("texto");
+    var janelaQuebrada = false;
+    function abrir() {
+        if (!janelaQuebrada) {
+            jan.src = "janela-aberta.jpeg";
+            texto.textContent = 'Janela Aberta';
+        }
+    }
+
+    function fechar() {
+        if(!janelaQuebrada){
+            jan.src = "janela-fechada.jpg";
+        texto.textContent = 'Janela Fechada';
+        }
+    }
+
+    function quebrar() {
+        jan.src = "janela-quebrada.png";
+        texto.textContent = 'Janela Quebrada';
+        janelaQuebrada = true;
+    }
+</script>
+
+</html>
