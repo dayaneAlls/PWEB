@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Formulário Principal</title>
+</head>
+
+<body>
+    <main id="formulario">
+        <legend>FORMULÁRIO PRINCIPAL</legend>
+        <br>
+        <hr class="line"><br>
+        <form onsubmit="return validarFormulario()">
+            <label for="nome"><em>Nome:</em></label>
+            <br>
+            <input type="nome" id="nome" name="nome" required size="50" minlength="10" autofocus>
+            <br><br>
+            <label for="email"><em>E-mail:</em></label>
+            <br>
+            <input type="email" id="email" name="email" required size="50" maxlength="50" autofocus>
+            <br><br>
+            <label for="comentário"><em>Comentário:</em></label>
+            <br>
+            <textarea name="mensagem" id="mensage1" style="width: 26em;" rows="6" minlength="20"></textarea>
+            <div style="text-align: center; padding-top: 5em;">
+                <h3>Pesquisa:</h3>
+                <p class="pergunta"><em>Primerira vez nesta página?</em></p>
+                <input type="radio" id="pesquisa-sim" name="pesquisa" value="sim" required>
+                <label for="pesquisa-sim">Sim</label>
+                <input type="radio" id="pesquisa-nao" name="pesquisa" value="nao">
+                <label for="pesquisa-nao">Não</label>
+                <br><br>
+                <input type="submit" id="submit" value="Enviar">
+                <button type="reset">Limpar</button>
+                <br><br>
+                <p id="resultado"></p>
+            </div>
+        </form>
+    </main>
+    <script>
+        function validarFormulario() {
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var comentario = document.getElementById("comentario").value;
+
+            if (nome.length < 10 || !email.includes("@") || !email.includes(".") || comentario.length < 20) {
+                alert("Por favor, preencha os campos corretamente.");
+                return false;
+            }
+            return false;
+        }
+        const submit = document.getElementById("submit");
+
+        submit.addEventListener("click", validate);
+
+        function validate(e) {
+            e.preventDefault();
+
+            var pesquisaSim = document.getElementById("pesquisa-sim");
+            var pesquisaNao = document.getElementById("pesquisa-nao");
+
+            if (pesquisaSim.Checked) {
+                const resultado = document.getElementById("resultado");
+                resultado.innerText = "Volte sempre à esta página!";
+            } if (!pesquisaNao.Checked) {
+                const resultado = document.getElementById("resultado");
+                resultado.innerText = "Que bom que você voltou a visitar esta página!";
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>
